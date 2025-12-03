@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
-
   const cargarTareasGuardadas = () => { // 1. Creamos una función para cargar los datos
     console.log("Intentando cargar tareas...");
     const tareasGuardadas = localStorage.getItem("taskList");// 2. Leemos el string desde localStorage
@@ -21,10 +20,7 @@ function App() {
   };
 
 
-
   // Estados
-
-
 
   const [historialOpen, setHistorialOpen] = useState(false)
 
@@ -35,10 +31,7 @@ function App() {
   })
 
 
-
   // Efectos
-
-
 
   useEffect(() => { /* Guardar taskList en localStorage */
     const jsonList = JSON.stringify(taskList)
@@ -80,8 +73,6 @@ function App() {
 
 
   // Funciones
-
-
 
   const addTask = (newTask) => {
     const taskConId = { ...newTask, id: Date.now(), originalValor: newTask.valor, fechaOriginal: newTask.fecha };
