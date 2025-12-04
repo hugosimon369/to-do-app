@@ -1,12 +1,16 @@
 import React from 'react';
+import { useContext, useState } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 
 const Navegacion = ({ onToggleHistorial }) => {
-    // Las funciones para manejar los cambios (tema, idioma, etc.)
-    // se implementarían aquí, usualmente conectadas a un estado global (Context API, Redux).
 
-    const handleThemeToggle = () => {
-        // Lógica para cambiar entre tema claro y oscuro
-        console.log("Cambiando tema...");
+    //ESTADOS
+    const { theme, setTheme } = useContext(ThemeContext)
+
+    //FUNCIONES 
+    const handleThemeToggle = (e) => {
+        const newTheme = e.target.value
+        console.log('cambiando el tema a: ', {newTheme})
     };
 
     const handleLangChange = (e) => {
@@ -28,27 +32,27 @@ const Navegacion = ({ onToggleHistorial }) => {
 
     return (
         <nav className='nav'>
-            <div>
+            <div className='nav-historial'>
                 <button onClick={onToggleHistorial}>
                     =
                 </button>
             </div>
-            <div>
-                <label htmlFor="language-select">tema: </label>
-                <select id="theme-select" onChange={handleThemeToggle}>
-                    <option value="black">oscuro</option>
-                    <option value="white">claro</option>
+            <div className='nav-theme'>
+                <label >tema: </label>
+                <select id="theme-select" onChange={handleThemeToggle} value={theme}>
+                    <option value="ligth">claro</option>
+                    <option value="dark">oscuro</option>
                 </select>
             </div>
             <div>
-                <label htmlFor="language-select">Idioma: </label>
+                <label >Idioma: </label>
                 <select id="language-select" onChange={handleLangChange}>
                     <option value="es">Español</option>
                     <option value="en">English</option>
                 </select>
             </div>
             <div>
-                <label htmlFor="font-size-select">Tamaño de letra: </label>
+                <label>Tamaño de letra: </label>
                 <select id="font-size-select" onChange={handleFontSizeChange}>
                     <option value="small">Pequeño</option>
                     <option value="medium">Mediano</option>
