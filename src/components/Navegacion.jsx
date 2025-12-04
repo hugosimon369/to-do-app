@@ -10,6 +10,7 @@ const Navegacion = ({ onToggleHistorial }) => {
     //FUNCIONES 
     const handleThemeToggle = (e) => {
         const newTheme = e.target.value
+        setTheme(newTheme)
         console.log('cambiando el tema a: ', {newTheme})
     };
 
