@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // Importamos la frecuencia que creamos arriba
 import { ThemeContext } from './ThemeContext';
 
@@ -6,6 +6,14 @@ export function ThemeProvider({ children }) {
     // Aquí vive el estado que queremos compartir globalmente
     const [theme, setTheme] = useState("ligth");
     const data = { theme, setTheme }
+
+    useEffect(() => {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    }, [theme])
 
     return (
         // Usamos el componente .Provider que vive DENTRO del contexto
