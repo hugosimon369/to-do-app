@@ -4,7 +4,7 @@ import { ThemeContext } from './ThemeContext';
 
 export function ThemeProvider({ children }) {
     // Aquí vive el estado que queremos compartir globalmente
-    const [theme, setTheme] = useState("ligth");
+    const [theme, setTheme] = useState("dark");
     const data = { theme, setTheme }
 
     useEffect(() => {

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
 
 function MenuLateral({ historialList, onToggleHistorial }) {
+    const { text } = useContext(LanguageContext)
 
     const tareasAgrupadas = historialList.reduce((carrito, tarea) => {
         const fecha = tarea.fecha; // O 'fechaCompletado' si la tienes        
@@ -18,7 +20,7 @@ function MenuLateral({ historialList, onToggleHistorial }) {
         e.stopPropagation();
     }
 
-    const ordenarFechas = (a, b)=>{
+    const ordenarFechas = (a, b) => {
         return b.localeCompare(a)
     }
 
@@ -27,19 +29,19 @@ function MenuLateral({ historialList, onToggleHistorial }) {
             <div className="fondo" onClick={onToggleHistorial}>
                 <div className="menu--lateral" onClick={handleMenuClick}>
                     <h2 className="historial--titulo">
-                        Historial
+                        {text.historyTitle}
                     </h2>
                     <div>
                         {Object.keys(tareasAgrupadas).sort(ordenarFechas).map((fecha) => (
-                        <div key={fecha} className="historial--dia">
-                            <h3>{fecha}</h3>
-                            <ul className="historial--ul">
-                                {tareasAgrupadas[fecha].map((tarea) => (
-                                    <li key={tarea.id}>{tarea.tarea}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
+                            <div key={fecha} className="historial--dia">
+                                <h3>{fecha}</h3>
+                                <ul className="historial--ul">
+                                    {tareasAgrupadas[fecha].map((tarea) => (
+                                        <li key={tarea.id}>{tarea.tarea}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

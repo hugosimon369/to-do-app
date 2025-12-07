@@ -7,21 +7,17 @@
 
 :root {
   --bg-color: #535bf2;
-  --text-color: #242424;
   background-color: var(--bg-color);
-  color: var(--text-color);
 }
 
 
 html.dark {
   --bg-color: #242424;
-  --text-color: #ffffff;
 }
 
 html {
   height: 100%;
   background-color: var(--bg-color);
-  color: var(--text-color);
 }
 
 .logo {
@@ -64,9 +60,19 @@ html {
 }
 
 
-
-
 /* LISTAS */
+
+
+.list--today>ul,
+.list--tomorrow>ul,
+.list--eventualy>ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+
+/* ITEM DE LAS LISTAS */
 
 
 .task-item {
@@ -74,6 +80,7 @@ html {
   justify-content: space-between;
   flex-basis: 0;
   flex-grow: 0;
+  gap: 5px;
 }
 
 .task-item>.textarea--tarea {
@@ -235,9 +242,12 @@ body.historial--abierto {
   padding: 1rem;
   border-bottom: 1px solid #ccc;
   padding-top: 0;
+  gap: 20px;
 }
 
-
+.nav>button {
+  padding: 0;
+}
 
 
 /* MEDIA QUERYS */

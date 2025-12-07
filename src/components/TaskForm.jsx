@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { LanguageContext } from "../context/LanguageContext";
 
 function TaskForm({ onMensajeroTask }) {
+    const { laguage, setLanguage, text } = useContext(LanguageContext)
 
     const getFechaPredefinida = () => {
         const tomorrow = new Date();
@@ -105,7 +107,7 @@ function TaskForm({ onMensajeroTask }) {
                         onChange={handleChange} />
                 </footer>
                 {error && <div style={{ color: "red" }}>{error}</div>}
-                <button type="submit" onClick={handleSubmit}>Agregar</button>
+                <button type="submit" onClick={handleSubmit}>{text.formButton}</button>
             </form>
         </>
     );

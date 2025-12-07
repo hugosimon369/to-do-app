@@ -4,7 +4,8 @@ import TaskList from './components/TaskList.jsx'
 import Navegacion from './components/Navegacion.jsx';
 import MenuLateral from './components/MenuLateral.jsx';
 import { useEffect, useState } from 'react';
-
+import { LanguageContext } from './context/LanguageContext.jsx';
+import { useContext } from 'react';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     }
   };
 
+  const {language, setLanguage, text} = useContext(LanguageContext)
 
   // Estados
 
@@ -181,20 +183,20 @@ function App() {
       <Navegacion onToggleHistorial={toggleHistorial} />
       <main className='main'>
         <section className='list--today'>
-          <h3>For today</h3>
+          <h3>{text.listTodayTitle}</h3>
           <TaskList tasks={tareasToday} onDelete={deleteTask} onCompleteTask={toggleComplete} variante='today' />
         </section>
         <section className='form'>
-          <h1>Working Tree</h1>
+          <h1>{text.appTitle}</h1>
           <TaskForm onMensajeroTask={addTask} />
         </section>
         <section className='list--tomorrow'>
-          <h3>tomorrow</h3>
+          <h3>{text.listTomorrowTitle}</h3>
           <TaskList tasks={tareasTomorrow} onDelete={deleteTask} onCompleteTask={toggleComplete} variante='tomorrow' />
         </section>
       </main>
-      <section className='list--future'>
-        <h3>Eventualy</h3>
+      <section className='list--eventualy'>
+        <h3>{text.listEventualyTitle}</h3>
         <TaskList tasks={tareasFuturas} onDelete={deleteTask} onCompleteTask={toggleComplete} variante='futuras' />
       </section>
     </>
