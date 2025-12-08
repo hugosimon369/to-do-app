@@ -1,14 +1,14 @@
 import React from 'react';
-import { useContext, useState } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
-import { LanguageContext } from '../context/LanguageContext';
+import { useState } from 'react';
+import { useTheme } from '../context/ThemeContext';
+import { LanguageContext, useLanguage } from '../context/LanguageContext';
 
 const Navegacion = ({ onToggleHistorial }) => {
 
     //ESTADOS
-    const { theme, setTheme } = useContext(ThemeContext)
+    const { theme, setTheme } = useTheme()
 
-    const { language, setLanguage, text } = useContext(LanguageContext)
+    const { language, setLanguage, text } = useLanguage()
 
 
     //FUNCIONES 
@@ -26,8 +26,24 @@ const Navegacion = ({ onToggleHistorial }) => {
     };
 
     const handleFontSizeChange = (e) => {
-        // Lógica para cambiar el tamaño de la fuente
-        console.log("Tamaño de fuente cambiado a:", e.target.value);
+        const valor = e.target.value
+        if (valor === 'small'){
+            document.body.classList.add('small')
+            document.body.classList.remove('medium')
+            document.body.classList.remove('large')
+        }
+        if (valor === 'medium'){
+            document.body.classList.add('medium')
+            document.body.classList.remove('small')
+            document.body.classList.remove('large')
+        }
+        if (valor === 'large'){
+            document.body.classList.add('large')
+            document.body.classList.remove('small')
+            document.body.classList.remove('medium')
+        }
+        console.log("Tamaño de fuente cambiado a:", valor);
+        return valor
     };
 
     const handleLogin = () => {
@@ -57,16 +73,16 @@ const Navegacion = ({ onToggleHistorial }) => {
             </div>
             <div>
                 <label >{text.languageLabel}</label>
-                <select id="language-select" onChange={handleLanguageChange}>
+                <select id="language-select" onChange={handleLanguageChange} value={language}>
                     <option value="es">{text.languageES}</option>
                     <option value="en">{text.languageEN}</option>
                 </select>
             </div>
             <div>
                 <label>{text.sizeLetterLabel}</label>
-                <select id="font-size-select" onChange={handleFontSizeChange}>
-                    <option value="small">{text.sizeLetterLitle}</option>
+                <select id="font-size-select" onChange={handleFontSizeChange} >
                     <option value="medium">{text.sizeLetterMedium}</option>
+                    <option value="small">{text.sizeLetterLitle}</option>
                     <option value="large">{text.sizeLetterBig}</option>
                 </select>
             </div>

@@ -7,9 +7,7 @@ export function LanguageProvider({ children }) {
 
     const text = dictionary[language]
 
-    const [size, setSize] = useState('medium')
-
-    const data = { language, setLanguage, text , size}
+    const data = { language, setLanguage, text}
 
 
     return (

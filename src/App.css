@@ -20,6 +20,18 @@ html {
   background-color: var(--bg-color);
 }
 
+body.small{
+  font-size: x-small;
+}
+
+body.medium{
+  font-size: medium;
+}
+
+body.large{
+  font-size: x-large;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
