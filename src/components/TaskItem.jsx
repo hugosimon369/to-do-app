@@ -9,8 +9,7 @@ function TaskItem({ task, onDeleteTask, onCompleteTask, variante }) {
     itemClassName += task.completed ? "completed" : "pending";
 
     const handleChange = () => {
-
-        console.log(`actualizando  la ".tarea" del elemento ${task.id} de la lista`)
+        console.log(`actualizando  la "${task.tarea}" del elemento ${task.id} de la lista`)
     }
 
     return (

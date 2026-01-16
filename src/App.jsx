@@ -20,7 +20,7 @@ function App() {
     }
   };
 
-  const {language, setLanguage, text} = useContext(LanguageContext)
+  const { language, setLanguage, text } = useContext(LanguageContext)
 
   // Estados
 
@@ -175,7 +175,10 @@ function App() {
     });
     setTaskList(listaActualizada);
   }
+
   const [diaRegistrado, setDiaRegistrado] = useState(fechaToday);
+
+
 
   return (
     <>
